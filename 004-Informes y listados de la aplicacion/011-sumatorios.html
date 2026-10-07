@@ -1,0 +1,483 @@
+<!--
+ok ahora crea una columna o dos con valores numéricos, y crea abajo de la tabla un resumen de sumario, y promedio de cada uno de los campos de tipo numérico
+
+-->
+
+
+```html
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Listado de clientes</title>
+
+  <style>
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      padding:40px;
+      background:#f4f4f8;
+      font-family:Arial,sans-serif;
+      color:#333;
+    }
+
+    .contenedor{
+      max-width:1200px;
+      margin:auto;
+      background:white;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 5px 25px rgba(0,0,0,0.08);
+    }
+
+    h1{
+      margin-top:0;
+      color:indigo;
+    }
+
+    .informacion{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:15px;
+      color:#666;
+      font-size:14px;
+    }
+
+    #contador{
+      background:indigo;
+      color:white;
+      padding:7px 14px;
+      border-radius:20px;
+      font-weight:bold;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      overflow:hidden;
+      border-radius:8px;
+    }
+
+    table thead{
+      background:indigo;
+      color:white;
+    }
+
+    table th{
+      padding:12px;
+      text-align:left;
+    }
+
+    thead tr:nth-child(2) th{
+      cursor:pointer;
+      user-select:none;
+      transition:background 0.2s;
+    }
+
+    thead tr:nth-child(2) th:hover{
+      background:#5c168a;
+    }
+
+    table input{
+      width:100%;
+      border:0;
+      outline:none;
+      padding:9px 11px;
+      border-radius:5px;
+      background:rgba(255,255,255,0.95);
+      color:#333;
+    }
+
+    table input:focus{
+      box-shadow:0 0 0 3px rgba(255,255,255,0.3);
+    }
+
+    table input::placeholder{
+      color:#999;
+    }
+
+    table td{
+      padding:12px;
+      border-bottom:1px solid #e8e8ee;
+    }
+
+    table tbody tr:nth-child(odd){
+      background:aliceblue;
+    }
+
+    table tbody tr:nth-child(even){
+      background:white;
+    }
+
+    table tbody tr{
+      transition:background 0.15s;
+    }
+
+    table tbody tr:hover{
+      background:#eee6f7;
+    }
+
+    /* Resumen */
+    .resumen{
+      margin-top:25px;
+      padding:20px;
+      background:#f4f4f8;
+      border-radius:10px;
+    }
+
+    .resumen h2{
+      margin-top:0;
+      color:indigo;
+    }
+
+    .resumen p{
+      margin:8px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+  <h1>Clientes</h1>
+
+  <div class="informacion">
+    <span>Listado de clientes registrados</span>
+    <span id="contador">10 filas</span>
+  </div>
+
+  <table>
+    <thead>
+
+      <tr>
+        <th><input type="search" placeholder="Buscar nombre..."></th>
+        <th><input type="search" placeholder="Buscar apellidos..."></th>
+        <th><input type="search" placeholder="Buscar email..."></th>
+        <th><input type="search" placeholder="Buscar teléfono..."></th>
+        <th><input type="search" placeholder="Buscar ciudad..."></th>
+        <th><input type="search" placeholder="Buscar edad..."></th>
+        <th><input type="search" placeholder="Buscar compras..."></th>
+      </tr>
+
+      <tr>
+        <th>Nombre ↕</th>
+        <th>Apellidos ↕</th>
+        <th>Email ↕</th>
+        <th>Teléfono ↕</th>
+        <th>Ciudad ↕</th>
+        <th>Edad ↕</th>
+        <th>Compras (€) ↕</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>Laura</td>
+        <td>Martínez García</td>
+        <td>laura.martinez@example.com</td>
+        <td>612 345 678</td>
+        <td>Valencia</td>
+        <td>25</td>
+        <td>350</td>
+      </tr>
+
+      <tr>
+        <td>Carlos</td>
+        <td>Sánchez López</td>
+        <td>carlos.sanchez@example.com</td>
+        <td>623 456 789</td>
+        <td>Madrid</td>
+        <td>32</td>
+        <td>520</td>
+      </tr>
+
+      <tr>
+        <td>Ana</td>
+        <td>Gómez Ruiz</td>
+        <td>ana.gomez@example.com</td>
+        <td>634 567 890</td>
+        <td>Alicante</td>
+        <td>28</td>
+        <td>275</td>
+      </tr>
+
+      <tr>
+        <td>David</td>
+        <td>Navarro Torres</td>
+        <td>david.navarro@example.com</td>
+        <td>645 678 901</td>
+        <td>Castellón</td>
+        <td>41</td>
+        <td>690</td>
+      </tr>
+
+      <tr>
+        <td>Marta</td>
+        <td>Romero Pérez</td>
+        <td>marta.romero@example.com</td>
+        <td>656 789 012</td>
+        <td>Sevilla</td>
+        <td>35</td>
+        <td>430</td>
+      </tr>
+
+      <tr>
+        <td>Javier</td>
+        <td>Ortega Molina</td>
+        <td>javier.ortega@example.com</td>
+        <td>667 890 123</td>
+        <td>Zaragoza</td>
+        <td>29</td>
+        <td>315</td>
+      </tr>
+
+      <tr>
+        <td>Lucía</td>
+        <td>Vidal Ferrer</td>
+        <td>lucia.vidal@example.com</td>
+        <td>678 901 234</td>
+        <td>Valencia</td>
+        <td>24</td>
+        <td>280</td>
+      </tr>
+
+      <tr>
+        <td>Sergio</td>
+        <td>Moreno Gil</td>
+        <td>sergio.moreno@example.com</td>
+        <td>689 012 345</td>
+        <td>Barcelona</td>
+        <td>38</td>
+        <td>750</td>
+      </tr>
+
+      <tr>
+        <td>Elena</td>
+        <td>Campos Soler</td>
+        <td>elena.campos@example.com</td>
+        <td>610 123 456</td>
+        <td>Murcia</td>
+        <td>31</td>
+        <td>410</td>
+      </tr>
+
+      <tr>
+        <td>Daniel</td>
+        <td>Ibáñez Costa</td>
+        <td>daniel.ibanez@example.com</td>
+        <td>621 234 567</td>
+        <td>Valencia</td>
+        <td>27</td>
+        <td>390</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+  <!-- RESUMEN -->
+
+  <div class="resumen">
+
+    <h2>Resumen</h2>
+
+    <p>
+      <strong>Edad:</strong>
+      <span id="sumaEdad">0</span> años de sumario -
+      <span id="promedioEdad">0</span> años de promedio
+    </p>
+
+    <p>
+      <strong>Compras:</strong>
+      <span id="sumaCompras">0</span> € de sumario -
+      <span id="promedioCompras">0</span> € de promedio
+    </p>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  let cuerpo = document.querySelector("tbody")
+  let cabeceras = document.querySelectorAll("thead tr:nth-child(2) th")
+  let entradas = document.querySelectorAll("thead input")
+  let contador = document.querySelector("#contador")
+
+
+  // ==========================================
+  // ORDENAR
+  // ==========================================
+
+  cabeceras.forEach(function(cabecera, indice){
+
+    let ascendente = true
+
+    cabecera.onclick = function(){
+
+      let filas = Array.from(cuerpo.querySelectorAll("tr"))
+
+      filas.sort(function(a,b){
+
+        let valorA = a.children[indice].textContent
+        let valorB = b.children[indice].textContent
+
+        // Orden numérico para Edad y Compras
+        if(indice == 5 || indice == 6){
+
+          valorA = Number(valorA)
+          valorB = Number(valorB)
+
+          if(ascendente){
+            return valorA - valorB
+          }else{
+            return valorB - valorA
+          }
+
+        }
+
+        if(ascendente){
+          return valorA.localeCompare(valorB)
+        }else{
+          return valorB.localeCompare(valorA)
+        }
+
+      })
+
+      filas.forEach(function(fila){
+        cuerpo.appendChild(fila)
+      })
+
+      ascendente = !ascendente
+
+    }
+
+  })
+
+
+  // ==========================================
+  // FILTRAR
+  // ==========================================
+
+  entradas.forEach(function(entrada){
+
+    entrada.oninput = function(){
+
+      let filas = cuerpo.querySelectorAll("tr")
+      let visibles = 0
+
+      filas.forEach(function(fila){
+
+        let cumple = true
+
+        entradas.forEach(function(entrada, indice){
+
+          let busqueda = entrada.value.toLowerCase().trim()
+
+          let contenido = fila.children[indice]
+                              .textContent
+                              .toLowerCase()
+
+          if(busqueda != "" && !contenido.includes(busqueda)){
+            cumple = false
+          }
+
+        })
+
+
+        if(cumple){
+
+          fila.style.display = ""
+          visibles++
+
+        }else{
+
+          fila.style.display = "none"
+
+        }
+
+      })
+
+
+      contador.textContent = visibles + " filas"
+
+      actualizarResumen()
+
+    }
+
+  })
+
+
+  // ==========================================
+  // RESUMEN
+  // ==========================================
+
+  function actualizarResumen(){
+
+    let filas = cuerpo.querySelectorAll("tr")
+
+    let sumaEdad = 0
+    let sumaCompras = 0
+    let visibles = 0
+
+    filas.forEach(function(fila){
+
+      if(fila.style.display != "none"){
+
+        sumaEdad += Number(fila.children[5].textContent)
+        sumaCompras += Number(fila.children[6].textContent)
+
+        visibles++
+
+      }
+
+    })
+
+
+    let promedioEdad = 0
+    let promedioCompras = 0
+
+    if(visibles > 0){
+
+      promedioEdad = sumaEdad / visibles
+      promedioCompras = sumaCompras / visibles
+
+    }
+
+
+    document.querySelector("#sumaEdad").textContent = sumaEdad.toFixed(2)
+    document.querySelector("#promedioEdad").textContent = promedioEdad.toFixed(2)
+
+    document.querySelector("#sumaCompras").textContent = sumaCompras.toFixed(2)
+    document.querySelector("#promedioCompras").textContent = promedioCompras.toFixed(2)
+
+  }
+
+
+  // ==========================================
+  // CONTADOR INICIAL
+  // ==========================================
+
+  function actualizarContador(){
+
+    let filas = cuerpo.querySelectorAll("tr")
+    contador.textContent = filas.length + " filas"
+
+  }
+
+  actualizarContador()
+  actualizarResumen()
+
+</script>
+
+</body>
+</html>
+```
