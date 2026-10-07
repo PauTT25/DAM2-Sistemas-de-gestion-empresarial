@@ -1,18 +1,3 @@
-// Vamos a cargar la configuración
-fetch("data/config.php")
-.then(function(respuesta){return respuesta.json()})
-.then(function(datos){
-  console.log("Los datos son")
-	console.log(datos)
-  let titulo = document.querySelector("h1")
-  titulo.textContent = datos.nombre
-  let cabecera = document.querySelector("header")
-  let navegacion1 = document.querySelector("#modulos")
-  let navegacion2 = document.querySelector("#entidades")
-  // Esto le cambia el color a la variable css
-  document.documentElement.style.setProperty('--color_corporativo', datos.color);
-})
-
 fetch("api/superapi.php?ruta=modulos")
 .then(function(respuesta){return respuesta.json()})
 .then(function(datos){

@@ -61,4 +61,3 @@ fetch("api/superapi.php?ruta=tabla")
   cadenatabla += "</table>";
   seccion.innerHTML = cadenatabla
 })
-
